@@ -22,10 +22,7 @@ public class ArticleDataGatewayTest {
     @Test
     public void findAll() {
         List<ArticleRecord> all = gateway.findAll();
-        System.out.println("HI");
-        System.out.println(Arrays.toString(all.toArray()));
         assertEquals(6, all.size());
-        System.out.println("HI2222222222222222222");
         List<ArticleRecord> available = gateway.findAvailable();
         assertEquals(4, available.size());
     }

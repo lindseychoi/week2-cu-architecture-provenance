@@ -29,20 +29,18 @@ public class ArticlesController extends BasicHandler {
                 writeJsonBody(servletResponse,
                         allArticles.stream()
                         .map(article -> new ArticleInfo(article.getId(), article.getTitle()))
-                        .toList());
+                        .collect(Collectors.toList()));
             }
         });
 
         get("/available", List.of("application/json"), request, servletResponse, () -> {
 
             { // todo - query the articles gateway for *available* articles, map records to infos, and send back a collection of article infos
-                Collection<ArticleRecord> allAvailableArticles = gateway.findAll();
-                writeJsonBody(servletResponse, allAvailableArticles);
-                System.out.println("HIIIIIIIIIIIIII");
-                System.out.println(Arrays.toString(allAvailableArticles.toArray()));
-                allAvailableArticles.stream()
-                        .map(article -> new ArticleInfo(article.getId(), article.getTitle()))
-                        .toList();
+                Collection<ArticleRecord> allAvailableArticles = gateway.findAvailable();
+                writeJsonBody(servletResponse,
+                        allAvailableArticles.stream()
+                                .map(article -> new ArticleInfo(article.getId(), article.getTitle()))
+                                .collect(Collectors.toList()));
             }
         });
     }
