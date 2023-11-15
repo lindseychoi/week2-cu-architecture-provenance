@@ -9,6 +9,7 @@ import static java.util.Collections.emptyList;
 
 public class ArticleDataGateway {
     private final List<ArticleRecord> articles = new ArrayList<>();
+
     private final Random sequence = new Random();
 
     public ArticleDataGateway() {

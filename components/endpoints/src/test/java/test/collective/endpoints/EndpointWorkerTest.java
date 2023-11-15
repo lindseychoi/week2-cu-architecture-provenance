@@ -23,7 +23,8 @@ public class EndpointWorkerTest {
 
         EndpointWorker worker = new EndpointWorker(mock, gateway);
         worker.execute(new EndpointTask("https://feed.infoq./"));
-
+        System.out.println("testing 1");
         assertEquals(15, gateway.findAll().size());
+        System.out.println("testing 2");
     }
 }
